@@ -33,5 +33,4 @@ class Product < ActiveRecord::Base
 	def title_is_downcase
 		self.title = self.title.downcase
 	end
-
 end
