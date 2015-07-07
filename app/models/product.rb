@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
 
 	scope :published,            ->{ where(published: true) }
 	scope :price_more_than,      ->( price ){ where('price > ?', price) }
-	scope :description_includes, ->{ where('description ILIKE ?', '%ruby%') } 
+	scope :description_includes, -> (description){ where('description ILIKE ?', '%ruby%') } 
 
 	def title_is_shorter_than_description
 		return if title.blank? or description.blank?
@@ -15,7 +15,13 @@ class Product < ActiveRecord::Base
 
 	before_save :strip_html_from_description
 	before_update :strip_html_from_description
+	before_validation :titile_is_downcase
+
 	def strip_html_from_description
 		self.description =  ActionView::Base.full_sanitizer.sanitize(self.description)
+	end
+
+	def titile_is_downcase
+		self.title = self.title.downcase
 	end
 end
