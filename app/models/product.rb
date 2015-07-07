@@ -4,10 +4,12 @@ class Product < ActiveRecord::Base
 
 	enumerize :difficulty_level, in: [:easy, :medium, :hard]
 
+	enumerize :country, in: Country.all.map {|name, code| code}
+
 	belongs_to :category
 
 	validate :title_is_shorter_than_description
-	validates :price, {numericality: {greater_than: 0}
+	validates :price, {numericality: {greater_than: 0}}
 	validates :category, presence: true
 
 	before_validation :strip_html_from_description
