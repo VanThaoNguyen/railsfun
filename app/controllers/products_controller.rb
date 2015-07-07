@@ -1,5 +1,9 @@
 class ProductsController < ApplicationController
 	def index
-		@product = Product.all.includes(:category).published
+		@products = Product.all.includes(:category).published
+	end
+
+	def show
+		@product = Product.find(params[:id])
 	end
 end

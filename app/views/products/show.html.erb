@@ -1,0 +1,19 @@
+<table>
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Price</th>
+			<th>Category</th>
+			<th>Country</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= @product.title %></td>
+			<td><%= @product.price %></td>
+			<td><%= @product.category.title %></td>
+			<td><%= Country[@product.country].name if @product.country %></td>
+		</tr>
+		
+	</tbody>
+</table>
