@@ -13,9 +13,12 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
-    @product.destroy
-    
-    redirect_to products_url
+    if @product.destroy
+      flash[:notice] = "Successfully!"
+      redirect_to products_url
+    else
+      flash[:notice] = "Not Working"
+      render :new
   end
 
   def edit

@@ -1,19 +1,11 @@
-<table>
-<% @products.each do |product| %>
-	<tr>
-		<td>Title</td>
-		<td>Price</td>
-		<td>Category</td>
-
-	</tr>
-	<tr>
-		<td><%= link_to(product.title, product_path(product)) %></td>
-		<td><%= product.price %></td>
-		<td><%= product.category.title %></td>
-		<td><%= link_to('Edit', edit_product_path(product))%></td>
-		<td><%= link_to('Delete', product_path(product), method: :delete,
-															data: { confirm: 'Are you sure you want to delete this product?'}) %></td>
-	</tr>
+<% @products.each do |p| %>
+	<table>
+		<tr>
+			<td>Title</td>
+			<td>Price</td>
+			<td>Category</td>
+		</tr>
+	<%= render partial: 'product', locals: {product: p} %>
+	</table>
 <% end %>
-</table>
 <%= link_to('Create New', new_product_path) %>
