@@ -11,6 +11,13 @@ class ProductsController < ApplicationController
 		@product = Product.new
 	end
 
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    
+    redirect_to products_url
+  end
+
   def edit
     @product = Product.find(params[:id])
   end
@@ -33,7 +40,7 @@ class ProductsController < ApplicationController
       redirect_to products_url
     else
       flash[:notice] = "There is an error in the form"
-      render :edit
+      render :new
     end
   end
 
