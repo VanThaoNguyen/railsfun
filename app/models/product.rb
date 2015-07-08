@@ -11,6 +11,7 @@ class Product < ActiveRecord::Base
 	validate :title_is_shorter_than_description
 	validates :price, {numericality: {greater_than: 0}}
 	validates :category, presence: true
+	validates :title, presence: true
 
 	before_validation :strip_html_from_description
 	before_validation :title_is_downcase

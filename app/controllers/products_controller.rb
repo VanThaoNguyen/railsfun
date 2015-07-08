@@ -12,11 +12,14 @@ class ProductsController < ApplicationController
 	end
 
 	def create
-
-		
 		@product = Product.new(product_params)
-		@product.save
-		redirect_to products_url
+		if @product.save
+      flash[:notice] = 'you have a successfully created the product'
+			redirect_to products_url
+		else
+      flash[:notice]= 'There is an error in the form'
+			render :new
+		end
 	end
 
 	private
