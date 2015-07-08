@@ -1,0 +1,13 @@
+p == "Create product #{link_to'New', new_product_path}"
+
+table
+	tr
+		th Title
+		th Price
+		th Category
+		th Country
+		th Description
+		th Level
+	tr
+		- @products.each do |product|
+			= render partial: 'product', locals: {product: product}
