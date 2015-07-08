@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
     else
       flash[:notice] = "Not Working"
       render :new
+    end
   end
 
   def edit
