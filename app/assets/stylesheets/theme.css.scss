@@ -1,0 +1,7 @@
+h1{
+  color: $h1_color;
+  font-size: $h1_font_size;
+  border: $h1_border;
+  text-align: $h1_align;
+  @include border-radius(5px);
+}

@@ -1,13 +1,14 @@
-p == "Create product #{link_to'New', new_product_path}"
+h1 Product List
 
-table
+table.table.table-striped
 	tr
 		th Title
 		th Price
 		th Category
 		th Country
 		th Description
-		th Level
 	tr
 		- @products.each do |product|
 			= render partial: 'product', locals: {product: product}
+
+p == "Create product #{link_to'New', new_product_path}"
