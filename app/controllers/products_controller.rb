@@ -11,6 +11,10 @@ class ProductsController < ApplicationController
 		@product = Product.new
 	end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
 	def create
 		@product = Product.new(product_params)
 		if @product.save
@@ -21,6 +25,17 @@ class ProductsController < ApplicationController
 			render :new
 		end
 	end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      flash[:notice] = 'You have a successfully updated this product'
+      redirect_to products_url
+    else
+      flash[:notice] = "There is an error in the form"
+      render :edit
+    end
+  end
 
 	private
 
